@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_clients`(IN pageNumber INT, IN pageSize INT)
+CREATE PROCEDURE `get_clients`(IN pageNumber INT, IN pageSize INT)
 BEGIN
 DECLARE theOffset INT;
 SET theOffset = (pageSize * pageNumber) - pageSize;

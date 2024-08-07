@@ -8,11 +8,11 @@
 		<version>3.3.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.acme</groupId>
-	<artifactId>acme-banking-platform</artifactId>
+	<groupId>com.mapper</groupId>
+	<artifactId>mapper-platform</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>banking-platform-es</name>
-	<description>banking-platform-es</description>
+	<name>mapper-platform-es</name>
+	<description>mapper-platform-es</description>
 	<url/>
 	<licenses>
 		<license/>
