@@ -1,6 +1,6 @@
 services:
   banking-platform-es:
-    image: mapper-platform-es:0.0.2
+    image: mapper-platform-es:0.0.4
     build:
       context: .
       dockerfile: Dockerfile

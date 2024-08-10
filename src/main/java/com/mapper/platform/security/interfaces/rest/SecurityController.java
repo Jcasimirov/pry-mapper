@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/v1/security", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "Segurity", description = "Security Management Endpoints")
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SecurityController {
     private final ClientCommandService clientCommandService;
     private final ClientQueryService clientQueryService;
@@ -40,6 +40,7 @@ public class SecurityController {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping
+    @CrossOrigin
     public ResponseEntity<RegisterClientResponseResource> register(@RequestBody RegisterClientResource resource) {
         try {
             Long id = TSID.Factory.getTsid().toLong();
@@ -66,6 +67,7 @@ public class SecurityController {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PutMapping("/{id}")
+    @CrossOrigin
     public ResponseEntity<EditClientResponseResource> edit(@PathVariable("id") Long id, @RequestBody EditClientResource resource) {
         try {
             resource = resource.withId(id);
@@ -86,6 +88,7 @@ public class SecurityController {
 
     @GetMapping("/page/{page}/limit/{limit}")
     @Operation(summary = "Get citizen")
+    @CrossOrigin
     public ResponseEntity<GetClientsResponseResource> getClients(@PathVariable("page") Integer page, @PathVariable("limit") Integer limit) {
         try {
             List<ClientProjection> clients = clientQueryService.getClients(page, limit);

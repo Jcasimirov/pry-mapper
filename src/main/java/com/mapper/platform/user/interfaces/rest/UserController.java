@@ -1,9 +1,5 @@
 package com.mapper.platform.user.interfaces.rest;
 
-import com.mapper.platform.security.domain.projections.ClientProjection;
-import com.mapper.platform.security.interfaces.rest.resources.GetClientsResponseResource;
-import com.mapper.platform.shared.domain.model.valueobjects.Error;
-import com.mapper.platform.shared.interfaces.rest.Pagination;
 import com.mapper.platform.user.application.commandservices.UserCommandService;
 import com.mapper.platform.user.application.queryservices.UserQueryService;
 import com.mapper.platform.user.domain.projections.UserProjection;
@@ -17,18 +13,16 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/user", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "User", description = "User Management Endpoints")
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
     private final UserCommandService userCommandService;
     private final UserQueryService userQueryService;
@@ -45,6 +39,7 @@ public class UserController {
         @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping
+    @CrossOrigin
     public ResponseEntity<RegisterUserResponseResource> register(@RequestBody RegisterUserResource resource) {
         try {
             Long id = TSID.Factory.getTsid().toLong();
@@ -66,6 +61,7 @@ public class UserController {
 
     @GetMapping("/session/byEmail/{email}")
     @Operation(summary = "Get session user")
+    @CrossOrigin
     public ResponseEntity<GetUserResponseResource> getSession(@PathVariable("email") String correo) {
         try {
             List<UserProjection> clients = userQueryService.getSession(correo);

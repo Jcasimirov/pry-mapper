@@ -5,13 +5,9 @@
 
 ### Run Axon Server
 ```
-$ cd /
-$ cd c/efra/tools/AxonServer-2024.0.3
-$ java -jar axonserver.jar
-```
 
 ### Axon Server URL
-- http://localhost:8024/
+- http://18.119.142.163:8024/
 
 ### API URL
-- http://localhost:8080/swagger-ui/index.html
+- https://bcwpxzpnhm.us-west-2.awsapprunner.com/swagger-ui/index.html
